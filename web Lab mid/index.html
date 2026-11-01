@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typing Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>⌨️ Typing <span>Challenge</span></h1>
+    <p>CSC336 Web Technologies · Lab Mid</p>
+  </header>
+
+  <main class="container">
+
+    <!-- ===================== HOME SCREEN ===================== -->
+    <section id="screen-home" class="screen active">
+      <h2 class="screen-title">Choose a game mode</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">🫧</div>
+          <h3>Bubbles</h3>
+          <p>Letters float upward inside bubbles. Press the matching key to pop them before they reach the top. A wrong key costs you points, and too many misses end the game.</p>
+          <button class="btn primary" id="start-bubbles-card">Start</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🧲</div>
+          <h3>KeyMagnet</h3>
+          <p>A target key appears with a keyboard panel. Hit the right key as fast as you can. Pick a key set and difficulty, and track your accuracy and response time.</p>
+          <button class="btn primary" id="start-magnet-card">Start</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== BUBBLES SCREEN ===================== -->
+    <section id="screen-bubbles" class="screen">
+      <div class="game-head">
+        <button class="btn ghost" data-go="home">← Home</button>
+        <h2>🫧 Bubbles</h2>
+      </div>
+
+      <div class="controls">
+        <label>Difficulty
+          <select id="bubbles-difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <div class="btn-group">
+          <button class="btn primary" id="bubbles-start">Start</button>
+          <button class="btn" id="bubbles-restart">Restart</button>
+          <button class="btn danger" id="bubbles-reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="status">
+        <div class="stat"><span>Score</span><b id="b-score">0</b></div>
+        <div class="stat"><span>Misses</span><b id="b-misses">0 / 0</b></div>
+        <div class="stat"><span>Level</span><b id="b-level">1</b></div>
+        <div class="stat"><span>Speed</span><b id="b-speed">0</b></div>
+        <div class="stat"><span>Correct</span><b id="b-correct">0</b></div>
+        <div class="stat"><span>Wrong</span><b id="b-wrong">0</b></div>
+      </div>
+
+      <div id="bubbles-feedback" class="feedback">Press Start, then type the letters you see.</div>
+      <div id="bubble-area" class="bubble-area"></div>
+      <p class="rules">Rules: correct key = +10 · wrong key = −5 · bubble reaches the top = 1 miss · every 5 correct pops the level goes up (faster bubbles, more bubbles). On a phone you can tap the bubbles.</p>
+    </section>
+
+    <!-- ===================== KEYMAGNET SCREEN ===================== -->
+    <section id="screen-magnet" class="screen">
+      <div class="game-head">
+        <button class="btn ghost" data-go="home">← Home</button>
+        <h2>🧲 KeyMagnet</h2>
+      </div>
+
+      <div class="controls">
+        <label>Difficulty
+          <select id="magnet-difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <label>Key set
+          <select id="magnet-keyset">
+            <option value="home">Home row (A S D F J K L)</option>
+            <option value="top">Top row (Q–P)</option>
+            <option value="bottom">Bottom row (Z–M)</option>
+            <option value="all">All letters</option>
+          </select>
+        </label>
+        <div class="btn-group">
+          <button class="btn primary" id="magnet-start">Start</button>
+          <button class="btn" id="magnet-restart">Restart</button>
+          <button class="btn danger" id="magnet-reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="status">
+        <div class="stat"><span>Score</span><b id="m-score">0</b></div>
+        <div class="stat"><span>Time left</span><b id="m-time">0s</b></div>
+        <div class="stat"><span>Progress</span><b id="m-progress">0 / 0</b></div>
+        <div class="stat"><span>Correct</span><b id="m-correct">0</b></div>
+        <div class="stat"><span>Incorrect</span><b id="m-wrong">0</b></div>
+        <div class="stat"><span>Avg time</span><b id="m-avg">–</b></div>
+      </div>
+
+      <div id="magnet-feedback" class="feedback">Press Start to get your first target key.</div>
+      <div id="magnet-target" class="target">?</div>
+      <div id="keyboard" class="keyboard" aria-label="Keyboard panel"></div>
+      <p class="rules">Rules: correct key = +10 (+5 bonus if under 1 second) · wrong key = −5 · Easy: 60s / 20 hits · Medium: 45s / 25 hits, 3s per target · Hard: 30s / 30 hits, 1.8s per target. The game ends when you reach the hit goal or time runs out.</p>
+    </section>
+
+    <!-- ===================== RESULTS SCREEN ===================== -->
+    <section id="screen-results" class="screen">
+      <div class="results-box">
+        <h2 id="results-title">Game Over</h2>
+        <p id="results-sub" class="results-sub"></p>
+        <div id="results-grid" class="results-grid"></div>
+        <div class="btn-group center">
+          <button class="btn primary" id="results-again">Play Again</button>
+          <button class="btn" id="results-home">Home</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">Made with HTML5 · CSS3 · JavaScript (ES6)</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
